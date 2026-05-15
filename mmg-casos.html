@@ -24,23 +24,21 @@
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 .wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
-/* TOPBAR */
 .topbar{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1.5px solid var(--text);padding-bottom:12px;margin-bottom:1.75rem}
 .brand-word{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.1em;color:var(--text);line-height:1}
 .brand-sub{font-size:10px;letter-spacing:0.18em;color:var(--text2);text-transform:uppercase;margin-top:3px}
 .count-pill{background:var(--lima);color:#000;font-size:11px;font-weight:500;padding:4px 13px;border-radius:99px}
-/* FILTERS */
+.loading{text-align:center;padding:3rem;font-size:13px;color:var(--text2)}
+.error-msg{background:#FFF0F0;border:0.5px solid #FFB0B0;border-radius:8px;padding:12px 16px;font-size:12px;color:#900;margin-bottom:1rem}
 .filter-block{margin-bottom:10px;display:flex;align-items:flex-start;gap:10px}
 .filter-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);padding-top:7px;min-width:60px;flex-shrink:0}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
-.chip{font-size:11px;font-weight:500;padding:5px 13px;border-radius:99px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all 0.12s;line-height:1.2}
+.chip{font-size:11px;font-weight:500;padding:5px 13px;border-radius:99px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all 0.12s;line-height:1.2;font-family:'DM Sans',sans-serif}
 .chip:hover{border-color:var(--text);color:var(--text)}
-/* SEARCH */
 .search-row{margin:14px 0 1.5rem;position:relative}
 .search-row svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:15px;height:15px;pointer-events:none;color:var(--text3)}
 .search-row input{width:100%;padding:9px 14px 9px 36px;font-size:13px;font-family:'DM Sans',sans-serif;border-radius:8px;border:0.5px solid var(--border2);background:var(--bg);color:var(--text);outline:none}
 .search-row input:focus{border-color:var(--text)}
-/* CASES */
 .cases{display:flex;flex-direction:column;gap:6px}
 .case-card{border:0.5px solid var(--border);border-radius:10px;background:var(--bg);overflow:hidden;transition:border-color 0.12s}
 .case-card:hover{border-color:var(--border2)}
@@ -55,109 +53,245 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .t-Metrix{background:#DCEEFF;color:#0C447C}.t-Forma{background:#FDECD8;color:#8A3A04}.t-Moov{background:#FFD6E3;color:#7A0025}.t-Vou{background:#EEFAD0;color:#3D6500}
 .t-svc{background:var(--bg2);color:var(--text2)}
 .case-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
-.btn-res{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:5px 11px;border-radius:6px;border:0.5px solid var(--border2);color:var(--text2);text-decoration:none;background:transparent;cursor:pointer;transition:all 0.12s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.btn-res{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:5px 11px;border-radius:6px;border:0.5px solid var(--border2);color:var(--text2);background:transparent;cursor:pointer;transition:all 0.12s;white-space:nowrap;font-family:'DM Sans',sans-serif}
 .btn-res:hover{background:var(--lima);border-color:var(--lima);color:#000}
 .btn-ppt{border-color:var(--text);color:var(--text)}
 .chev{width:16px;height:16px;flex-shrink:0;color:var(--text3);transition:transform 0.15s}
 .chev.open{transform:rotate(180deg)}
-/* DETAIL */
 .case-detail{display:none;padding:14px 16px 18px 34px;border-top:0.5px solid var(--border);background:var(--bg2)}
 .case-detail.open{display:block}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-bottom:14px}
 .dl{font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
 .dv{font-size:13px;color:var(--text)}
 .detail-links{display:flex;gap:8px;flex-wrap:wrap}
-.lnk{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:6px 14px;border-radius:6px;text-decoration:none;border:0.5px solid var(--border2);color:var(--text);background:var(--bg);cursor:pointer;transition:all 0.12s;font-family:'DM Sans',sans-serif}
+.lnk{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:6px 14px;border-radius:6px;border:0.5px solid var(--border2);color:var(--text);background:var(--bg);cursor:pointer;transition:all 0.12s;font-family:'DM Sans',sans-serif}
 .lnk:hover{background:var(--lima);border-color:var(--lima);color:#000}
 .lnk-ppt{border-color:var(--text)}
 .no-res-txt{font-size:12px;color:var(--text3)}
 .empty{padding:3rem;text-align:center;font-size:13px;color:var(--text2)}
-/* NOTE */
-.ppt-note{background:#FFFDE7;border:0.5px solid #F0C040;border-radius:6px;padding:8px 12px;font-size:11px;color:#7A5800;margin-bottom:1.25rem}
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:999}
+.login-box{text-align:center;width:320px}
+.login-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.12em;margin-bottom:4px}
+.login-sub{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text2);margin-bottom:32px}
+.login-box input{width:100%;padding:10px 14px;font-size:14px;font-family:'DM Sans',sans-serif;border:1px solid var(--border2);border-radius:8px;outline:none;margin-bottom:10px;text-align:center;letter-spacing:0.12em}
+.login-box input:focus{border-color:var(--text)}
+.login-btn{width:100%;padding:10px;background:#000;color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;border:none;border-radius:8px;cursor:pointer;transition:background 0.12s}
+.login-btn:hover{background:#222}
+.login-err{font-size:12px;color:#E0004D;margin-top:8px;min-height:18px}
+.login-box input[type=password]{-webkit-text-security:disc}
 </style>
 </head>
 <body>
-<div class="wrap">
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">MMG</div>
+    <div class="login-sub">Casos de Éxito</div>
+    <input type="password" id="pwd-input" placeholder="Contraseña" onkeydown="if(event.key==='Enter')checkPwd()">
+    <button class="login-btn" onclick="checkPwd()">Ingresar</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- BOARD -->
+<div class="wrap" id="board" style="display:none">
   <div class="topbar">
     <div>
       <div class="brand-word">MMG</div>
       <div class="brand-sub">Casos de Éxito</div>
     </div>
-    <span class="count-pill" id="count-lbl">73 casos</span>
+    <span class="count-pill" id="count-lbl">Cargando…</span>
   </div>
 
-  <div class="ppt-note">
-    ⚠️ Los links de <strong>One Page</strong> están pendientes de cargar en el Google Sheet. Cuando los agregues en la columna correspondiente, aparecerán automáticamente en el board.
-  </div>
-
-  <div class="filter-block">
-    <span class="filter-label">Área</span>
-    <div class="chips" id="c-area">
-      <button class="chip" data-val="" data-group="area" onclick="toggleChip(this)">Todas</button>
-      <button class="chip" data-val="Metrix" data-group="area" onclick="toggleChip(this)">Metrix</button>
-      <button class="chip" data-val="Forma" data-group="area" onclick="toggleChip(this)">Forma</button>
-      <button class="chip" data-val="Moov" data-group="area" onclick="toggleChip(this)">Moov</button>
-      <button class="chip" data-val="Vou" data-group="area" onclick="toggleChip(this)">Vou</button>
+  <div id="filter-area" style="display:none">
+    <div class="filter-block">
+      <span class="filter-label">Área</span>
+      <div class="chips" id="c-area">
+        <button class="chip" data-val="" data-group="area" onclick="toggleChip(this)">Todas</button>
+        <button class="chip" data-val="Metrix" data-group="area" onclick="toggleChip(this)">Metrix</button>
+        <button class="chip" data-val="Forma" data-group="area" onclick="toggleChip(this)">Forma</button>
+        <button class="chip" data-val="Moov" data-group="area" onclick="toggleChip(this)">Moov</button>
+        <button class="chip" data-val="Vou" data-group="area" onclick="toggleChip(this)">Vou</button>
+      </div>
     </div>
-  </div>
-  <div class="filter-block">
-    <span class="filter-label">Industria</span>
-    <div class="chips" id="c-ind">
-      <button class="chip" data-val="" data-group="ind" onclick="toggleChip(this)">Todas</button>
-      <button class="chip" data-val="Accesorios" data-group="ind" onclick="toggleChip(this)">Accesorios</button><button class="chip" data-val="Agroindustria" data-group="ind" onclick="toggleChip(this)">Agroindustria</button><button class="chip" data-val="Alimentos" data-group="ind" onclick="toggleChip(this)">Alimentos</button><button class="chip" data-val="Automotriz" data-group="ind" onclick="toggleChip(this)">Automotriz</button><button class="chip" data-val="Autopistas" data-group="ind" onclick="toggleChip(this)">Autopistas</button><button class="chip" data-val="Bebidas" data-group="ind" onclick="toggleChip(this)">Bebidas</button><button class="chip" data-val="Consumo Masivo" data-group="ind" onclick="toggleChip(this)">Consumo Masivo</button><button class="chip" data-val="Educación" data-group="ind" onclick="toggleChip(this)">Educación</button><button class="chip" data-val="Financiero" data-group="ind" onclick="toggleChip(this)">Financiero</button><button class="chip" data-val="Forestal" data-group="ind" onclick="toggleChip(this)">Forestal</button><button class="chip" data-val="Grabado Láser" data-group="ind" onclick="toggleChip(this)">Grabado Láser</button><button class="chip" data-val="Inmobiliaria" data-group="ind" onclick="toggleChip(this)">Inmobiliaria</button><button class="chip" data-val="Logística" data-group="ind" onclick="toggleChip(this)">Logística</button><button class="chip" data-val="Repuestos automotrices" data-group="ind" onclick="toggleChip(this)">Repuestos automotrices</button><button class="chip" data-val="Retail" data-group="ind" onclick="toggleChip(this)">Retail</button><button class="chip" data-val="Salud" data-group="ind" onclick="toggleChip(this)">Salud</button><button class="chip" data-val="Servicios" data-group="ind" onclick="toggleChip(this)">Servicios</button><button class="chip" data-val="Servicios legales" data-group="ind" onclick="toggleChip(this)">Servicios legales</button><button class="chip" data-val="Turismo enológico" data-group="ind" onclick="toggleChip(this)">Turismo enológico</button><button class="chip" data-val="Vinos" data-group="ind" onclick="toggleChip(this)">Vinos</button><button class="chip" data-val="Ópticas" data-group="ind" onclick="toggleChip(this)">Ópticas</button>
+    <div class="filter-block">
+      <span class="filter-label">Industria</span>
+      <div class="chips" id="c-ind"></div>
     </div>
-  </div>
-  <div class="filter-block">
-    <span class="filter-label">Servicio</span>
-    <div class="chips" id="c-svc">
-      <button class="chip" data-val="" data-group="svc" onclick="toggleChip(this)">Todos</button>
-      <button class="chip" data-val="SEO" data-group="svc" onclick="toggleChip(this)">SEO</button><button class="chip" data-val="SEM" data-group="svc" onclick="toggleChip(this)">SEM</button><button class="chip" data-val="Analytics" data-group="svc" onclick="toggleChip(this)">Analytics</button><button class="chip" data-val="CRO" data-group="svc" onclick="toggleChip(this)">CRO</button><button class="chip" data-val="Desarrollo Web" data-group="svc" onclick="toggleChip(this)">Desarrollo Web</button><button class="chip" data-val="Audiovisual" data-group="svc" onclick="toggleChip(this)">Audiovisual</button><button class="chip" data-val="CRM" data-group="svc" onclick="toggleChip(this)">CRM</button><button class="chip" data-val="Diseño" data-group="svc" onclick="toggleChip(this)">Diseño</button><button class="chip" data-val="Influencer" data-group="svc" onclick="toggleChip(this)">Influencer</button><button class="chip" data-val="RRSS" data-group="svc" onclick="toggleChip(this)">RRSS</button><button class="chip" data-val="Planning" data-group="svc" onclick="toggleChip(this)">Planning</button><button class="chip" data-val="MELI" data-group="svc" onclick="toggleChip(this)">MELI</button><button class="chip" data-val="Social Listening" data-group="svc" onclick="toggleChip(this)">Social Listening</button><button class="chip" data-val="Performance Design" data-group="svc" onclick="toggleChip(this)">Performance Design</button><button class="chip" data-val="Content Managers" data-group="svc" onclick="toggleChip(this)">Content Managers</button>
+    <div class="filter-block">
+      <span class="filter-label">Servicio</span>
+      <div class="chips" id="c-svc"></div>
+    </div>
+    <div class="search-row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      <input type="text" id="q" placeholder="Buscar por cliente, caso o industria…" oninput="render()">
     </div>
   </div>
 
-  <div class="search-row">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-    <input type="text" id="q" placeholder="Buscar por cliente, caso o industria…" oninput="render()">
+  <div id="cases-wrap">
+    <div class="loading">Cargando casos…</div>
   </div>
-
-  <div class="cases" id="cases"></div>
 </div>
 
 <script>
-const DATA=[{"area": "Metrix", "servicio": "SEO", "cliente": "IntegraMédica", "industria": "Salud", "nombre": "Un buscador Optimizado disparó el rendimiento orgánico en 60 días", "privado": true, "fecha": "5/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/como-una-estrategia-seo-basada-en-intencion-de-busqueda-multiplico-los-agendamientos-online-en-60-dias/"}, {"area": "Metrix", "servicio": "Medios Digitales", "cliente": "Finning", "industria": "Consumo Masivo", "nombre": "Optimización de la conversión + agentes conversacionales", "privado": false, "fecha": "9/01/2025", "blog": "https://www.metrix.digital/casos-de-estudio/como-escalamos-la-captacion-b2b-con-automatizacion-conversacional-inteligente/"}, {"area": "Moov", "servicio": "SEM, Diseño, Audiovisual", "cliente": "Grupo Defensa", "industria": "Servicios legales", "nombre": "Integración entre el mundo físico y Digital mediante la promoción de una estrategia Hibrida, Phygital", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Grupo Defensa", "industria": "Servicios legales", "nombre": "Del Lead al cliente: Cómo HubSpot potenció la trazabilidad y el retorno", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Kitchen Center", "industria": "Retail, Electrodomésticos", "nombre": "Performance Inteligente: IA para optimizar inversión y acelerar decisiones", "privado": false, "fecha": "9/01/2025", "blog": "https://www.metrix.digital/casos-de-estudio/agente-ia-gpt-como-automatizar-decisiones-y-optimizaciones-paid-media-en-tiempo-real/"}, {"area": "Forma", "servicio": "Desarrollo Web, CRO, Diseño", "cliente": "Concha y Toro", "industria": "Turismo enológico", "nombre": "El arte de navengar un vino", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM, CRM", "cliente": "Assetplan", "industria": "Inmobiliaria", "nombre": "Optimización de leads Supply con HubSpot: gestión integral, audiencias personalizadas y campañas en Meta/Google enfocadas en la obtención de SQL de alta calidad.", "privado": true, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Americar", "industria": "Retail, Automotriz", "nombre": "La inteligencia que acelera las decisiones", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM, Cross Media, Diseño", "cliente": "Ashley", "industria": "Retail, Muebles", "nombre": "Cyber con alma de hogar", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEO, Desarrollo Web", "cliente": "Assetplan", "industria": "Inmobiliaria", "nombre": "De Mapa a listado: cómo assetplan potenció su visibilidad con SEO", "privado": true, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEO, SEM, Analytics", "cliente": "Bubba Bags", "industria": "Retail, Accesorios", "nombre": "Preparamos la mochila antes del cyber", "privado": false, "fecha": "9/01/2025", "blog": "https://www.metrix.digital/casos-de-estudio/como-bubba-bags-supero-todas-las-metas-en-cyber-2025-con-planificacion-y-eficiencia/"}, {"area": "Metrix", "servicio": "SEM", "cliente": "Rotter & Krauss", "industria": "Ópticas , Retail", "nombre": "Flash Hours: Estrategia táctica para mejorar la tasa de conversión durante periodos de cyber", "privado": false, "fecha": "9/01/2025", "blog": "https://www.metrix.digital/casos-de-estudio/como-rotter-krauss-mejoro-su-conversion-en-cyber-con-una-tactica-basada-en-datos/"}, {"area": "Forma", "servicio": "Design thinking, Desarrollo Web", "cliente": "Agrozzi", "industria": "Agroindustria", "nombre": "La cosecha digital que duplicó oportunidades", "privado": false, "fecha": "4/02/2025", "blog": "https://www.somosforma.com/casos-de-estudio/como-transformamos-el-sitio-de-agrozzi-en-una-plataforma-que-genera-oportunidades-comerciales-reales/"}, {"area": "Forma", "servicio": "Desarrollo Web", "cliente": "Coopecaja", "industria": "Financiero", "nombre": "Gestión que fluje: el salto tecnológico de coopecaja", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "CRM", "cliente": "Grupo Defensa", "industria": "Servicios legales", "nombre": "Auditoría de usabilidad HubSpot", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Kitchen Center", "industria": "Retail, Electrodomésticos", "nombre": "El catálogo que encontró su momento", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/como-kitchen-center-mejoro-su-rendimiento-digital-con-ia-visual-en-pinterest/"}, {"area": "Moov", "servicio": "Audiovisual, SEM, Diseño", "cliente": "Vías Chile", "industria": "Autopistas", "nombre": "Te prometo que vuelvo", "privado": false, "fecha": "5/02/2026", "blog": "https://www.moov.cl/casos-de-estudio/te-prometo-que-vuelvo-como-logramos-conectar-una-campana-emotiva-con-inteligencia-artificial/"}, {"area": "Metrix", "servicio": "SEM", "cliente": "Americar", "industria": "Retail, Automotriz", "nombre": "IA toma el volante del proceso comercial", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/la-ia-toma-el-volante-del-proceso-comercial-mas-ventas-en-la-categoria-usados/"}, {"area": "Metrix", "servicio": "SEM, SEO, Analytics", "cliente": "IntegraMédica", "industria": "Salud", "nombre": "Optimizar para cuidar", "privado": true, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/aumento-de-agendamientos-con-una-estrategia-integrada-multicanal/"}, {"area": "Metrix", "servicio": "SEM", "cliente": "Kitchen Center", "industria": "Retail, Electrodomésticos", "nombre": "Resultados al punto perfecto", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/como-kitchen-center-impulso-su-canal-organico-para-aumentar-ventas-y-trafico-durante-2024/"}, {"area": "Metrix", "servicio": "SEM", "cliente": "Mundo Repuestos", "industria": "Repuestos automotrices", "nombre": "Performance con motor propio", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEO", "cliente": "Salfa repuestos", "industria": "Repuestos automotrices", "nombre": "Repuestos listos para la IA", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/como-salfa-repuestos-optimizo-su-posicionamiento-en-buscadores-de-inteligencia-artificial/"}, {"area": "Vou", "servicio": "SEO, SEM", "cliente": "Red Salud", "industria": "Salud", "nombre": "Posicionamiento Saludable", "privado": true, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Analytics", "cliente": "Santa Rita Online", "industria": "Vinos", "nombre": "Carrusel dinámico: +90% de los ingresos atribuibles a recomendaciones personalizadas durante el Cyber", "privado": false, "fecha": "4/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/carrusel-dinamico-aumento-de-los-ingresos-con-recomendaciones-personalizadas-durante-el-cyber/"}, {"area": "Moov", "servicio": "Planning, Diseño, Audiovisual", "cliente": "Chilexpress", "industria": "Logística", "nombre": "Tarifa Base: Un nuevo tiempo de entrega", "privado": false, "fecha": "6/02/2026", "blog": "https://www.moov.cl/casos-de-estudio/como-una-campana-360-fortalecio-las-ventas-y-el-posicionamiento-omnicanal-de-chilexpress/"}, {"area": "Forma", "servicio": "Analytics", "cliente": "CocaCola Embonor", "industria": "Bebidas", "nombre": "Recomendaciones de contenidos diferenciados por segmentos en mail", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/el-poder-de-recomendar-con-datos-aumento-de-ingresos-en-email-marketing/"}, {"area": "Forma", "servicio": "Desarrollo Web", "cliente": "Sumitomo", "industria": "Repuestos automotrices", "nombre": "Japón solicitó que para mayor seguridad se debía implementar un doble factor en el sitio", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Content Managers, SEO, Desarrollo Web", "cliente": "UBO", "industria": "Educación", "nombre": "Optimización Integral de la Web: Maximizando Performance y Estándares de Seguridad", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/como-ubo-mejoro-su-rendimiento-y-estandares-de-seguridad-con-una-optimizacion-tecnica-de-alto-impacto/"}, {"area": "Moov", "servicio": "Diseño", "cliente": "SQM Nutrition", "industria": "Agroindustria", "nombre": "Uso de IA para publicación Orgánica en Feed", "privado": false, "fecha": "6/02/2026", "blog": "https://www.moov.cl/casos-de-estudio/cuando-la-ia-se-vuelve-parte-del-contenido-el-engagement-responde/"}, {"area": "Forma", "servicio": "Analytics", "cliente": "Totto Chile", "industria": "Retail", "nombre": "Inline Predictivo: recomendaciones que impulsan", "privado": true, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM, SEO, Analytics", "cliente": "CocaCola Embonor", "industria": "Bebidas", "nombre": "Superación Meta Black Friday 2025", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/superar-la-meta-en-black-friday-con-foco-en-eficiencia-y-ticket-promedio/"}, {"area": "Metrix", "servicio": "MELI", "cliente": "Marley Coffee", "industria": "Bebidas", "nombre": "Marley Coffee – AUMENTO DE AUDIENCIA CALIFICADA", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Santa Rita Online", "industria": "Vinos", "nombre": "Optimización Estratégica de Feeds: Cómo Santa Rita Online incrementó su elegibilidad y visibilidad mediante Data Feed Watch", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/caso-de-exito-santa-rita-online-aumento-del-roas-con-optimizacion-del-catalogo-en-google-shopping/"}, {"area": "Metrix", "servicio": "SEO", "cliente": "IntegraMédica", "industria": "Salud", "nombre": "Optimizaciones en landing laboratorio para aumentar agendamientos", "privado": true, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "CRO", "cliente": "Caja Los Andes", "industria": "Financiero", "nombre": "Layout Agenda - Turismo", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "CRO", "cliente": "IdeaLaser", "industria": "Grabado Láser", "nombre": "Layout Cotizador", "privado": false, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEO", "cliente": "UBO", "industria": "Educación", "nombre": "Uso de FAQ para mejora de tráfico y posicionamiento de carreras", "privado": true, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEO, SEM", "cliente": "Redsalud", "industria": "Salud", "nombre": "Experimento SEO/SEM para telemedicina", "privado": true, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEO, SEM, CRO, Analytics", "cliente": "El Volcán", "industria": "Retail", "nombre": "Optimización Brand", "privado": true, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Influencer", "cliente": "IntegraMédica", "industria": "Salud", "nombre": "Uso de influencers área dermoestética", "privado": true, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "RRSS, CC", "cliente": "Apumanque", "industria": "Inmobiliaria", "nombre": "Concurso VAG Digital + CC", "privado": false, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Diseño", "cliente": "Xinerlink", "industria": "Servicios", "nombre": "Crear con IA un avatar que explique en 5 simples pasos cómo crear un CV con la estructura Harvard", "privado": false, "fecha": "6/02/2026", "blog": "https://www.moov.cl/casos-de-estudio/un-avatar-cinco-pasos-y-una-nueva-forma-de-aprender-con-ia/"}, {"area": "Forma", "servicio": "Analytics", "cliente": "Arrow", "industria": "Retail", "nombre": "Segmentación Inteligente para Impactar Clientes con Alta Probabilidad de Compra", "privado": false, "fecha": "4/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/cuando-la-segmentacion-dinamica-mejora-el-resultado-en-ventas/"}, {"area": "Forma", "servicio": "SEO, Desarrollo Web, Diseño", "cliente": "Vías Chile", "industria": "Autopistas", "nombre": "AUTOPISTA NUEVA ACONCAGUA - VÍASCHILE", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/una-navegacion-disenada-para-el-viaje-no-solo-para-el-sitio/"}, {"area": "Forma", "servicio": "Desarrollo Web", "cliente": "Arauco", "industria": "Forestal", "nombre": "Corrección seguridad PTS (Prueba de Penetración o Pentest) La Clase Maestra", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/de-un-sitio-comprometido-a-una-plataforma-reforzada-seguridad-restaurada-end-to-end/"}, {"area": "Forma", "servicio": "Desarrollo Web, Diseño", "cliente": "Clínica Pasteur", "industria": "Salud", "nombre": "Rediseño Estratégico de Hero Slider: Aumento de Clics y Mejora en la Interacción Intuitiva", "privado": false, "fecha": "3/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/un-hero-que-se-navega-con-estrategia-en-clinica-pasteur/"}, {"area": "Metrix", "servicio": "SEM", "cliente": "Kitchen Center", "industria": "Retail, Electrodomésticos", "nombre": "Estrategia de Puja Agresiva en Meta Ads para Maximizar el ROAS", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Desarrollo Web", "cliente": "Anda", "industria": "Servicios", "nombre": "Optimización del Customer Journey para Captación de Suscriptores mediante Landing Page Dedicada", "privado": false, "fecha": "29/01/2026", "blog": "https://www.somosforma.com/casos-de-estudio/anda-logro-un-aumento-de-suscriptores-a-traves-de-una-landing-page-estrategica/"}, {"area": "Forma", "servicio": "Desarrollo Web", "cliente": "Santa Rita Online", "industria": "Vinos", "nombre": "Informe de Competitividad de Precios", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Analytics", "cliente": "CocaCola Embonor", "industria": "Bebidas", "nombre": "Personalización Onsite: impacto en un clic", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/personalizacion-en-tiempo-real-que-elevo-las-ventas-en-una-semana-de-alta-demanda/"}, {"area": "Forma", "servicio": "Analytics", "cliente": "Bubba Bags Chile", "industria": "Accesorios, Retail", "nombre": "Push Cyber: urgencia en tiempo real", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/como-las-notificaciones-push-activaron-urgencia-y-trafico-en-tiempo-real/"}, {"area": "Forma", "servicio": "SEM, Analytics", "cliente": "CocaCola Embonor", "industria": "Bebidas", "nombre": "Sincronía Predictiva: Potenciando Meta con Datos de Connectif", "privado": false, "fecha": "5/02/2026", "blog": "https://www.somosforma.com/casos-de-estudio/como-la-sincronia-entre-connectif-y-meta-elevo-eficiencia-ticket-y-conversion/"}, {"area": "Metrix", "servicio": "SEO, SEM, Analytics", "cliente": "CocaCola Embonor", "industria": "Bebidas", "nombre": "Superación Meta Black Friday 2025", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM, SEO, Analytics", "cliente": "Black Bubba", "industria": "Retail, Accesorios", "nombre": "Superación Meta Black Friday 2025", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/caso-de-exito-black-bubba-aumento-de-meta-cumplida-en-black-friday/"}, {"area": "Metrix", "servicio": "SEO, SEM", "cliente": "BAYONA | Guante, Gacel & Anacapri", "industria": "Retail", "nombre": "Mejora en resultados Cyber en base a una Agil gestión", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM", "cliente": "Americar", "industria": "Automotriz", "nombre": "Optimización creativa orientada a performance para la generación de cotizaciones de Peugeot vía WhatsApp y Conversiones", "privado": false, "fecha": "6/02/2026", "blog": "https://www.metrix.digital/casos-de-estudio/como-americar-aumento-su-conversion-usando-ia-conversacional-en-whatsapp/"}, {"area": "Metrix", "servicio": "SEM, MELI", "cliente": "Marley Coffee", "industria": "Bebidas", "nombre": "Aumento de audiencia calificada", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEM, Performance Design", "cliente": "Salfa repuestos", "industria": "Repuestos automotrices", "nombre": "AUMENTO DE INTERACCIÓN Y BAJA DE COSTOS IMPLEMENTACIÓN DE ANIMACIONES IA EN VIDEOS", "privado": false, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEM", "cliente": "Converse", "industria": "Retail", "nombre": "Campaña búsqueda categorías - tráfico calificado", "privado": true, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEM", "cliente": "Converse", "industria": "Retail", "nombre": "Separación de campañas en base a rentabilidad", "privado": true, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "RRSS", "cliente": "Caja Los Andes", "industria": "Financiero", "nombre": "Canal de Difusión", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEO", "cliente": "Salfa Repuestos", "industria": "Repuestos automotrices", "nombre": "Metadata optimizada para aparecer en AI Overview", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "SEO", "cliente": "Salfa Repuestos", "industria": "Repuestos automotrices", "nombre": "Cómo Salfa activó demanda local oculta mediante indexación estratégica", "privado": false, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Influencer, RRSS", "cliente": "Integramédica", "industria": "Salud", "nombre": "Cómo IntegraMédica multiplicó su interacción en TikTok redefiniendo su estrategia de contenido", "privado": true, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Planning, RRSS", "cliente": "Chilexpress", "industria": "Logística", "nombre": "Campaña Navidad 2025", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Social Listening", "cliente": "Carozzi", "industria": "Alimentos", "nombre": "Insights que Alimentan Estrategias", "privado": false, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "Social Listening, Influencer", "cliente": "Unilever", "industria": "Retail", "nombre": "Trend Intelligence: activación de tendencias digitales para el lanzamiento de productos", "privado": true, "fecha": "", "blog": ""}, {"area": "Forma", "servicio": "CRM", "cliente": "Otic", "industria": "Servicios", "nombre": "Reducción de contactos de marketing", "privado": true, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "CRO", "cliente": "Santa Rita Online", "industria": "Vinos", "nombre": "Diseño que guía, usuario que compra", "privado": false, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Estrategia, RRSS", "cliente": "Apumanque", "industria": "Inmobiliaria", "nombre": "Aputherians", "privado": false, "fecha": "", "blog": ""}, {"area": "Metrix", "servicio": "CRO", "cliente": "ClikAuto", "industria": "Automotriz", "nombre": "Optimización de CTA Fijo en Ficha de Vehículo para Multiplicar Agendamientos", "privado": false, "fecha": "", "blog": ""}, {"area": "Vou", "servicio": "SEM", "cliente": "Converse", "industria": "Retail", "nombre": "Optimización de estrategia de puja: de maximizar clics a maximizar conversiones en campaña de generación de demanda", "privado": true, "fecha": "", "blog": ""}, {"area": "Moov", "servicio": "Estrategia, RRSS, Influencer", "cliente": "Turbus", "industria": "Servicios", "nombre": "Dile que si al verano con Turbus", "privado": false, "fecha": "", "blog": ""}];
+// ─── CONTRASEÑA ───────────────────────────────────────────────
+// Cambiá este valor por la contraseña que quieras
+const PASSWORD = 'mmg2024';
 
-const AREA_COLORS={Metrix:'#307FE2',Forma:'#FE5000',Moov:'#E0004D',Vou:'#DCFE6F'};
-const AREA_TEXT={Metrix:'#fff',Forma:'#fff',Moov:'#fff',Vou:'#000'};
-const SEL={area:new Set(),ind:new Set(),svc:new Set()};
-let openIdx=null;
+function checkPwd(){
+  const v = document.getElementById('pwd-input').value;
+  if(v === PASSWORD){
+    sessionStorage.setItem('mmg_auth','1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('board').style.display='block';
+    loadData();
+  } else {
+    document.getElementById('login-err').textContent='Contraseña incorrecta.';
+    document.getElementById('pwd-input').value='';
+  }
+}
+
+// Auto-login si ya autenticó en esta sesión
+if(sessionStorage.getItem('mmg_auth')==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('board').style.display='block';
+}
+
+// ─── CSV URL ──────────────────────────────────────────────────
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSnYUb4xmdEc3-mhSEwQ6eVPy5fVAvNfka6LkncVyrsokFffhzw5lJQeB6Q-DTjTLJzh1Fjrj0ZdzUu/pub?output=csv';
+
+// ─── CSV PARSER ───────────────────────────────────────────────
+function parseCSV(text){
+  const lines = text.split(/\r?\n/);
+  const headers = parseLine(lines[0]);
+  const rows = [];
+  for(let i=1;i<lines.length;i++){
+    if(!lines[i].trim()) continue;
+    const vals = parseLine(lines[i]);
+    const obj = {};
+    headers.forEach((h,j) => obj[h.trim()] = (vals[j]||'').trim());
+    rows.push(obj);
+  }
+  return rows;
+}
+
+function parseLine(line){
+  const result=[], re=/("(?:[^"]|"")*"|[^,]*)/g;
+  let m;
+  while((m=re.exec(line))!==null){
+    if(m.index===re.lastIndex) re.lastIndex++;
+    let v=m[1];
+    if(v.startsWith('"')&&v.endsWith('"')) v=v.slice(1,-1).replace(/""/g,'"');
+    result.push(v);
+  }
+  return result;
+}
+
+// ─── DATA ─────────────────────────────────────────────────────
+let DATA = [];
+const SEL = {area:new Set(),ind:new Set(),svc:new Set()};
+let openIdx = null;
+
+const AREA_COLORS = {Metrix:'#307FE2',Forma:'#FE5000',Moov:'#E0004D',Vou:'#DCFE6F'};
+const AREA_TEXT   = {Metrix:'#fff',Forma:'#fff',Moov:'#fff',Vou:'#000'};
+const SVC_KEYWORDS = ['SEO','SEM','Analytics','CRO','Desarrollo Web','Audiovisual','CRM','Diseño','Influencer','RRSS','Planning','MELI','Social Listening'];
+
+async function loadData(){
+  try{
+    const resp = await fetch(CSV_URL);
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    const text = await resp.text();
+    const rows = parseCSV(text);
+
+    // Detectar nombre de columna J (URL one page)
+    // Puede llamarse distinto según lo que escribió el usuario
+    const sampleRow = rows[0] || {};
+    const pptKey = Object.keys(sampleRow).find(k =>
+      k.toLowerCase().includes('url') ||
+      k.toLowerCase().includes('link') ||
+      k.toLowerCase().includes('one page') ||
+      k.toLowerCase().includes('slide')
+    ) || 'URL One Page';
+
+    DATA = rows
+      .filter(r => r['Área'] && r['Área'].trim())
+      .map(r => {
+        let blog = (r['Artículo Blog']||'').trim();
+        if(['NA','N/A','na'].includes(blog)) blog='';
+        let ppt = (r[pptKey]||'').trim();
+        if(ppt && !ppt.startsWith('http')) ppt='';
+        return {
+          area: r['Área']||'',
+          servicio: r['Servicio']||'',
+          cliente: r['Cliente']||'',
+          industria: r['Industria']||'',
+          nombre: r['Nombre del Caso']||'',
+          privado: ['SI','SÍ','TRUE'].includes((r['PRIVADO']||'').toUpperCase()),
+          fecha: r['Fecha de publicación']||'',
+          blog, ppt
+        };
+      });
+
+    // Build dynamic filter chips
+    buildChips();
+    document.getElementById('filter-area').style.display='block';
+    document.getElementById('cases-wrap').innerHTML='<div class="cases" id="cases"></div>';
+    render();
+  } catch(e){
+    document.getElementById('cases-wrap').innerHTML=
+      '<div class="error-msg">Error al cargar los datos: '+e.message+'<br>Verificá que el CSV esté publicado correctamente.</div>';
+    document.getElementById('count-lbl').textContent='Error';
+  }
+}
+
+function buildChips(){
+  const inds = [...new Set(DATA.map(d=>d.industria.split(',')[0].trim()).filter(Boolean))].sort();
+  const svcs = SVC_KEYWORDS;
+
+  const indEl = document.getElementById('c-ind');
+  indEl.innerHTML='<button class="chip" data-val="" data-group="ind" onclick="toggleChip(this)">Todas</button>';
+  inds.forEach(i=>{
+    const b=document.createElement('button');
+    b.className='chip'; b.dataset.val=i; b.dataset.group='ind';
+    b.textContent=i; b.onclick=function(){toggleChip(this)};
+    indEl.appendChild(b);
+  });
+
+  const svcEl = document.getElementById('c-svc');
+  svcEl.innerHTML='<button class="chip" data-val="" data-group="svc" onclick="toggleChip(this)">Todos</button>';
+  svcs.forEach(s=>{
+    const b=document.createElement('button');
+    b.className='chip'; b.dataset.val=s; b.dataset.group='svc';
+    b.textContent=s; b.onclick=function(){toggleChip(this)};
+    svcEl.appendChild(b);
+  });
+}
 
 function toggleChip(el){
   const group=el.dataset.group, val=el.dataset.val, set=SEL[group];
-  if(val===''){ set.clear(); document.querySelectorAll('[data-group="'+group+'"]').forEach(c=>resetChip(c,group,c.dataset.val)); }
-  else{
-    document.querySelector('[data-group="'+group+'"][data-val=""]').style.cssText='';
-    if(set.has(val)){ set.delete(val); resetChip(el,group,val); }
-    else{ set.add(val); activateChip(el,group,val); }
+  const gid = group==='area'?'c-area':group==='ind'?'c-ind':'c-svc';
+  if(val===''){
+    set.clear();
+    document.querySelectorAll('#'+gid+' .chip').forEach(c=>{c.style.background='';c.style.color='';c.style.borderColor='';});
+  } else {
+    document.querySelector('#'+gid+' [data-val=""]').style.cssText='';
+    if(set.has(val)){
+      set.delete(val);
+      el.style.background=''; el.style.color=''; el.style.borderColor='';
+    } else {
+      set.add(val);
+      if(group==='area'&&AREA_COLORS[val]){
+        el.style.background=AREA_COLORS[val];
+        el.style.color=AREA_TEXT[val];
+        el.style.borderColor=AREA_COLORS[val];
+      } else {
+        el.style.background='#000'; el.style.color='#fff'; el.style.borderColor='#000';
+      }
+    }
   }
   openIdx=null; render();
-}
-
-function activateChip(el,group,val){
-  if(group==='area'&&AREA_COLORS[val]){
-    el.style.background=AREA_COLORS[val];
-    el.style.color=AREA_TEXT[val];
-    el.style.borderColor=AREA_COLORS[val];
-  }else{
-    el.style.background='#000';
-    el.style.color='#fff';
-    el.style.borderColor='#000';
-  }
-}
-
-function resetChip(el){
-  el.style.background='';
-  el.style.color='';
-  el.style.borderColor='';
 }
 
 const LOCK='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E0004D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" title="No apto para RRSS"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>';
@@ -168,7 +302,7 @@ const BLOG_I='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke
 function openLink(url){ window.open(url,'_blank'); }
 
 function render(){
-  const q=document.getElementById('q').value.toLowerCase();
+  const q=(document.getElementById('q')||{value:''}).value.toLowerCase();
   const list=DATA.filter(d=>{
     if(SEL.area.size&&!SEL.area.has(d.area))return false;
     if(SEL.ind.size&&![...SEL.ind].some(v=>d.industria.toLowerCase().includes(v.toLowerCase())))return false;
@@ -178,13 +312,13 @@ function render(){
   });
   document.getElementById('count-lbl').textContent=list.length+(list.length===1?' caso':' casos');
   const c=document.getElementById('cases');
+  if(!c) return;
   if(!list.length){c.innerHTML='<div class="empty">Sin resultados.</div>';return;}
   c.innerHTML=list.map((d,i)=>{
     const open=openIdx===i;
     const hB=d.blog&&d.blog.startsWith('http');
     const hP=d.ppt&&d.ppt.startsWith('http');
-    const chevClass='chev'+(open?' open':'');
-    return `<div class="case-card">
+    return`<div class="case-card">
       <div class="case-main" onclick="tog(${i})">
         <div class="accent a-${d.area}"></div>
         <div class="case-body">
@@ -198,7 +332,7 @@ function render(){
         <div class="case-right">
           ${hP?`<button class="btn-res btn-ppt" onclick="event.stopPropagation();openLink('${d.ppt}')">${PPT_I}One page</button>`:''}
           ${hB?`<button class="btn-res" onclick="event.stopPropagation();openLink('${d.blog}')">${BLOG_I}Blog</button>`:''}
-          <div class="${chevClass}">${CHEV}</div>
+          <div class="chev${open?' open':''}">${CHEV}</div>
         </div>
       </div>
       <div class="case-detail${open?' open':''}">
@@ -219,7 +353,9 @@ function render(){
 }
 
 function tog(i){openIdx=openIdx===i?null:i;render();}
-render();
+
+// Auto-load si ya está autenticado
+if(sessionStorage.getItem('mmg_auth')==='1') loadData();
 </script>
 </body>
 </html>
